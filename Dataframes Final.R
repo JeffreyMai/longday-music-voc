@@ -1,12 +1,13 @@
 library(readr)
 
 Cleaned_Dataset_Export_1 <- read_csv("C:/Users/Jeffrey/Box/Jeffrey Mai 1st Year Project (IT API admin)/Stats/Final Analysis Sheets/Cleaned_Dataset_Export_1.csv")
-FNSTETSimplified <- read_csv("C:/Users/Jeffrey/Box/Jeffrey Mai 1st Year Project (IT API admin)/Stats/Final Analysis Sheets//FNSTETSimplified.csv")
+FNSTETSimplified <- read_csv("C:/Users/Jeffrey/Box/Jeffrey Mai 1st Year Project (IT API admin)/Stats/Final Analysis Sheets/FNSTETSimplified.csv")
 #Cleaned_Dataset_Export_1 <- read_csv("~/Library/CloudStorage/Box-Box/Jeffrey Mai 1st Year Project/Stats/Final Analysis Sheets/Cleaned_Dataset_Export_1.csv")
 #FNSTETSimplified <- read_csv("~/Library/CloudStorage/Box-Box/Jeffrey Mai 1st Year Project/Stats/Final Analysis Sheets/FNSTETSimplified.csv")
 
 #creating empty data frame
-Descriptives_Table = data.frame(Child_ID = integer(),
+Descriptives_Table = data.frame(File_Name = character(),
+                                Child_ID = integer(),
                                 Child_Age = integer(),
                                 Start_Time = double(),
                                 End_Time = double(),
@@ -173,23 +174,23 @@ for(x in 1:nrow(FNSTETSimplified)){
           }
         }
       }
-      if(!is.na(Cleaned_Dataset_Export_1$InfantVocType[j])){
-         if(Cleaned_Dataset_Export_1$InfantVocType[j] == "C"){
-          Child_C <- Child_C + Cleaned_Dataset_Export_1$Duration[j]
-          Child_C_count <- Child_C_count + 1
-        } else if(Cleaned_Dataset_Export_1$InfantVocType[j] == "X"){
-          Child_X <- Child_X + Cleaned_Dataset_Export_1$Duration[j]
-          Child_X_count <- Child_X_count + 1
-        } else if(Cleaned_Dataset_Export_1$InfantVocType[j] == "R"){
-          Child_R <- Child_R + Cleaned_Dataset_Export_1$Duration[j]
-          Child_R_count <- Child_R_count + 1
-        } else if(Cleaned_Dataset_Export_1$InfantVocType[j] == "L"){
-          Child_L <- Child_L + Cleaned_Dataset_Export_1$Duration[j]
-          Child_L_count <- Child_L_count + 1
+        if(!is.na(Cleaned_Dataset_Export_1$InfantVocType[j])){
+          if(Cleaned_Dataset_Export_1$InfantVocType[j] == "C"){
+            Child_C <- Child_C + Cleaned_Dataset_Export_1$Duration[j]
+            Child_C_count <- Child_C_count + 1
+          } else if(Cleaned_Dataset_Export_1$InfantVocType[j] == "X"){
+            Child_X <- Child_X + Cleaned_Dataset_Export_1$Duration[j]
+            Child_X_count <- Child_X_count + 1
+          } else if(Cleaned_Dataset_Export_1$InfantVocType[j] == "R"){
+            Child_R <- Child_R + Cleaned_Dataset_Export_1$Duration[j]
+            Child_R_count <- Child_R_count + 1
+          } else if(Cleaned_Dataset_Export_1$InfantVocType[j] == "L"){
+            Child_L <- Child_L + Cleaned_Dataset_Export_1$Duration[j]
+            Child_L_count <- Child_L_count + 1
         }
       }
         } 
-    }else if(j == nrow(Cleaned_Dataset_Export_1)){ #prints the info for the 5 minute segment
+      }else if(j == nrow(Cleaned_Dataset_Export_1)){ #prints the info for the 5 minute segment
       Child_C_log <- log(Child_C + .001)
       Child_X_log <- log(Child_X + .001)
       Child_R_log <- log(Child_R + .001)
@@ -203,49 +204,55 @@ for(x in 1:nrow(FNSTETSimplified)){
       Adult_NoMusic_N_log <- log(Adult_NoMusic_N + .001)
       Adult_NoMusic_U_log <- log(Adult_NoMusic_U + .001)
       Adult_NoMusic_T_log <- log(Adult_NoMusic_T + .001)
-      Descriptives_Table[nrow(Descriptives_Table) +1,] <- as.numeric(c(Child_ID, 
-                                                                       Child_Age,
-                                                                       Start_Time,
-                                                                       End_Time,
-                                                                       Child_C,
-                                                                       Child_X,
-                                                                       Child_R, 
-                                                                       Child_L,
-                                                                       Adult_Lyrical_N, 
-                                                                       Adult_Lyrical_U, 
-                                                                       Adult_Lyrical_T, 
-                                                                       Adult_NonLyrical_N,
-                                                                       Adult_NonLyrical_U,
-                                                                       Adult_NonLyrical_T, 
-                                                                       Adult_NoMusic_N,
-                                                                       Adult_NoMusic_U,
-                                                                       Adult_NoMusic_T,
-                                                                       Child_C_log,
-                                                                       Child_X_log,
-                                                                       Child_R_log,
-                                                                       Child_L_log,
-                                                                       Adult_Lyrical_N_log,
-                                                                       Adult_Lyrical_U_log,
-                                                                       Adult_Lyrical_T_log,
-                                                                       Adult_NonLyrical_N_log,
-                                                                       Adult_NonLyrical_U_log,
-                                                                       Adult_NonLyrical_T_log,
-                                                                       Adult_NoMusic_N_log,
-                                                                       Adult_NoMusic_U_log,
-                                                                       Adult_NoMusic_T_log,
-                                                                       Child_C_count,
-                                                                       Child_X_count,
-                                                                       Child_R_count,
-                                                                       Child_L_count,
-                                                                       Adult_Lyrical_N_count,
-                                                                       Adult_Lyrical_U_count,
-                                                                       Adult_Lyrical_T_count,
-                                                                       Adult_NonLyrical_N_count,
-                                                                       Adult_NonLyrical_U_count,
-                                                                       Adult_NonLyrical_T_count,
-                                                                       Adult_NoMusic_N_count,
-                                                                       Adult_NoMusic_U_count,
-                                                                       Adult_NoMusic_T_count)) #creates new row and inserts everything into Descriptives_Table
+      if(nchar(File_Name) == 22){
+        File_Name <- substr(temp_Name, start = 1, stop = 11) #removes _Edited.eaf
+      }else if(nchar(File_Name) == 23){
+        File_Name <- substr(temp_Name, start = 1, stop = 12) #removes _Edited.eaf
+      }
+      Descriptives_Table[nrow(Descriptives_Table) +1,] <- c(File_Name,
+                                                            Child_ID, 
+                                                            Child_Age,
+                                                            Start_Time,
+                                                            End_Time,
+                                                            Child_C,
+                                                            Child_X,
+                                                            Child_R, 
+                                                            Child_L,
+                                                            Adult_Lyrical_N, 
+                                                            Adult_Lyrical_U, 
+                                                            Adult_Lyrical_T, 
+                                                            Adult_NonLyrical_N,
+                                                            Adult_NonLyrical_U,
+                                                            Adult_NonLyrical_T, 
+                                                            Adult_NoMusic_N,
+                                                            Adult_NoMusic_U,
+                                                            Adult_NoMusic_T,
+                                                            Child_C_log,
+                                                            Child_X_log,
+                                                            Child_R_log,
+                                                            Child_L_log,
+                                                            Adult_Lyrical_N_log,
+                                                            Adult_Lyrical_U_log,
+                                                            Adult_Lyrical_T_log,
+                                                            Adult_NonLyrical_N_log,
+                                                            Adult_NonLyrical_U_log,
+                                                            Adult_NonLyrical_T_log,
+                                                            Adult_NoMusic_N_log,
+                                                            Adult_NoMusic_U_log,
+                                                            Adult_NoMusic_T_log,
+                                                            Child_C_count,
+                                                            Child_X_count,
+                                                            Child_R_count,
+                                                            Child_L_count,
+                                                            Adult_Lyrical_N_count,
+                                                            Adult_Lyrical_U_count,
+                                                            Adult_Lyrical_T_count,
+                                                            Adult_NonLyrical_N_count,
+                                                            Adult_NonLyrical_U_count,
+                                                            Adult_NonLyrical_T_count,
+                                                            Adult_NoMusic_N_count,
+                                                            Adult_NoMusic_U_count,
+                                                            Adult_NoMusic_T_count) #creates new row and inserts everything into Descriptives_Table
       #resets all variables for new subset
       File_Name <- 0
       Child_ID <- 0
@@ -296,4 +303,9 @@ for(x in 1:nrow(FNSTETSimplified)){
   }
 }
 
+#Changes values from char to numberic format
+for (i in 2:ncol(Descriptives_Table)){
+  Descriptives_Table[,i] <- as.numeric(Descriptives_Table[,i])
+}
 
+write.csv("C:/Users/Jeffrey/Box/Jeffrey Mai 1st Year Project (IT API admin)/Stats/Final Analysis Sheets/Descriptives_Table")
