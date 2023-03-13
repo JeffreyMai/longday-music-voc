@@ -85,6 +85,172 @@ Model is nearly unidentifiable: very large eigenvalue
 #########################################################################################################################################
 
 Linear mixed model fit by REML. t-tests use Satterthwaite's method ['lmerModLmerTest']
+Formula: Child_C_log ~ (1 | Child_ID) + Adult_Lyrical_T_log + Adult_Lyrical_N_log + Adult_NoMusic_N_log + Adult_NoMusic_T_log + Adult_NonLyrical_N_log +  Adult_NonLyrical_T_log
+   Data: subset_18
+
+REML criterion at convergence: 440.8
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-4.1694 -0.1579  0.1675  0.3815  1.5605 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ Child_ID (Intercept) 1.099    1.048   
+ Residual             3.924    1.981   
+Number of obs: 98, groups:  Child_ID, 33
+
+Fixed effects:
+                       Estimate Std. Error       df t value Pr(>|t|)
+(Intercept)             2.78509    1.77260 88.95079   1.571    0.120
+Adult_Lyrical_T_log    -0.03544    0.12938 90.98989  -0.274    0.785
+Adult_Lyrical_N_log     0.05761    0.29141 86.49164   0.198    0.844
+Adult_NoMusic_N_log     0.02506    0.06653 79.51576   0.377    0.707
+Adult_NoMusic_T_log     0.10700    0.06926 87.33590   1.545    0.126
+Adult_NonLyrical_N_log  0.04235    0.21651 83.78476   0.196    0.845
+Adult_NonLyrical_T_log  0.01247    0.09599 80.13664   0.130    0.897
+
+Correlation of Fixed Effects:
+            (Intr) A_L_T_ A_L_N_ A_NM_N A_NM_T A_NL_N
+Adlt_Lyr_T_  0.371                                   
+Adlt_Lyr_N_  0.575  0.009                            
+Adlt_NMs_N_ -0.134  0.017 -0.063                     
+Adlt_NMs_T_ -0.046 -0.074  0.027 -0.412              
+Adlt_NnL_N_  0.100 -0.005 -0.660 -0.044  0.000       
+Adlt_NnL_T_  0.201 -0.341 -0.032 -0.066  0.004  0.074
+
+#########################################################################################################################################
+
+Generalized linear mixed model fit by maximum likelihood (Laplace Approximation) ['glmerMod']
+ Family: poisson  ( log )
+Formula: Child_C_count ~ (1 | Child_ID) + Adult_Lyrical_T_count + Adult_Lyrical_N_count +      Adult_NoMusic_N_count + Adult_NoMusic_T_count + Adult_NonLyrical_N_count +      Adult_NonLyrical_T_count
+   Data: subset_18
+
+     AIC      BIC   logLik deviance df.resid 
+  1051.2   1071.8   -517.6   1035.2       90 
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-5.3523 -1.1756 -0.1862  0.9712  5.6043 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ Child_ID (Intercept) 0.615    0.7842  
+Number of obs: 98, groups:  Child_ID, 33
+
+Fixed effects:
+                           Estimate Std. Error z value Pr(>|z|)    
+(Intercept)               3.0110492  0.1462557  20.588  < 2e-16 ***
+Adult_Lyrical_T_count    -0.1074445  0.0363686  -2.954  0.00313 ** 
+Adult_Lyrical_N_count    -0.1798098  0.1134111  -1.585  0.11286    
+Adult_NoMusic_N_count    -0.0050160  0.0016683  -3.007  0.00264 ** 
+Adult_NoMusic_T_count     0.0005244  0.0010861   0.483  0.62920    
+Adult_NonLyrical_N_count  0.4638017  0.2199883   2.108  0.03500 *  
+Adult_NonLyrical_T_count  0.0628411  0.0247551   2.539  0.01113 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+            (Intr) A_L_T_ A_L_N_ A_NM_N A_NM_T A_NL_N
+Adlt_Lyr_T_ -0.052                                   
+Adlt_Lyr_N_  0.111  0.009                            
+Adlt_NMs_N_ -0.236  0.082 -0.259                     
+Adlt_NMs_T_ -0.222  0.191 -0.119  0.185              
+Adlt_NnL_N_ -0.115 -0.010 -0.974  0.250  0.123       
+Adlt_NnL_T_  0.056 -0.934 -0.002 -0.112 -0.224  0.003
+optimizer (Nelder_Mead) convergence code: 0 (OK)
+Model is nearly unidentifiable: very large eigenvalue
+ - Rescale variables?
+
+#########################################################################################################################################
+
+Linear mixed model fit by REML. t-tests use Satterthwaite's method ['lmerModLmerTest']
+Formula: Child_C_log ~ (1 | Child_ID) + Child_Age + Adult_Lyrical_T_log +      Adult_Lyrical_N_log + Adult_NoMusic_N_log + Adult_NoMusic_T_log +      Adult_NonLyrical_N_log + Adult_NonLyrical_T_log
+   Data: subset_9_18
+
+REML criterion at convergence: 1064.7
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-2.8467 -0.2495  0.2802  0.6042  1.9153 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ Child_ID (Intercept)  1.103   1.050   
+ Residual             10.010   3.164   
+Number of obs: 201, groups:  Child_ID, 39
+
+Fixed effects:
+                        Estimate Std. Error        df t value Pr(>|t|)    
+(Intercept)             -1.59853    1.72990 192.02836  -0.924 0.356616    
+Child_Age               -0.02163    0.02463 162.85906  -0.878 0.381195    
+Adult_Lyrical_T_log     -0.43732    0.11270 187.64522  -3.881 0.000144 ***
+Adult_Lyrical_N_log     -0.11920    0.16351 181.34973  -0.729 0.466948    
+Adult_NoMusic_N_log      0.03306    0.07023 184.53796   0.471 0.638376    
+Adult_NoMusic_T_log      0.08702    0.06822 176.04729   1.276 0.203811    
+Adult_NonLyrical_N_log   0.10793    0.23820 182.05453   0.453 0.651029    
+Adult_NonLyrical_T_log   0.01555    0.10498 184.54285   0.148 0.882443    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+            (Intr) Chld_A A_L_T_ A_L_N_ A_NM_N A_NM_T A_NL_N
+Child_Age   -0.230                                          
+Adlt_Lyr_T_  0.072  0.008                                   
+Adlt_Lyr_N_  0.113  0.080 -0.317                            
+Adlt_NMs_N_ -0.138  0.103 -0.002 -0.060                     
+Adlt_NMs_T_ -0.118  0.175 -0.077  0.044 -0.326              
+Adlt_NnL_N_  0.748 -0.070  0.008 -0.391 -0.043 -0.015       
+Adlt_NnL_T_  0.315  0.008 -0.398  0.000 -0.035 -0.073  0.105
+
+#########################################################################################################################################
+
+Generalized linear mixed model fit by maximum likelihood (Laplace Approximation) ['glmerMod']
+ Family: poisson  ( log )
+Formula: Child_C_count ~ (1 | Child_ID) + Child_Age + Adult_Lyrical_T_count +      Adult_Lyrical_N_count + Adult_NoMusic_N_count + Adult_NoMusic_T_count +      Adult_NonLyrical_N_count + Adult_NonLyrical_T_count
+   Data: subset_9_18
+
+     AIC      BIC   logLik deviance df.resid 
+  3068.6   3098.4  -1525.3   3050.6      192 
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-5.5630 -2.2944 -0.5008  2.0636 11.8595 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ Child_ID (Intercept) 0.7691   0.877   
+Number of obs: 201, groups:  Child_ID, 39
+
+Fixed effects:
+                           Estimate Std. Error z value Pr(>|z|)    
+(Intercept)               2.4220809  0.1515009  15.987  < 2e-16 ***
+Child_Age                 0.0050219  0.0021505   2.335 0.019532 *  
+Adult_Lyrical_T_count    -0.0715625  0.0157342  -4.548 5.41e-06 ***
+Adult_Lyrical_N_count    -0.4538728  0.0654010  -6.940 3.93e-12 ***
+Adult_NoMusic_N_count    -0.0033348  0.0011526  -2.893 0.003813 ** 
+Adult_NoMusic_T_count    -0.0031785  0.0009077  -3.502 0.000462 ***
+Adult_NonLyrical_N_count  1.0857365  0.1304858   8.321  < 2e-16 ***
+Adult_NonLyrical_T_count  0.0358108  0.0131182   2.730 0.006336 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+            (Intr) Chld_A A_L_T_ A_L_N_ A_NM_N A_NM_T A_NL_N
+Child_Age   -0.218                                          
+Adlt_Lyr_T_ -0.005 -0.049                                   
+Adlt_Lyr_N_  0.011  0.080 -0.080                            
+Adlt_NMs_N_ -0.125 -0.038  0.011 -0.128                     
+Adlt_NMs_T_ -0.151  0.149  0.022  0.006 -0.013              
+Adlt_NnL_N_ -0.015 -0.094  0.072 -0.931  0.112  0.022       
+Adlt_NnL_T_  0.001  0.050 -0.659 -0.007 -0.001 -0.144  0.007
+optimizer (Nelder_Mead) convergence code: 0 (OK)
+Model is nearly unidentifiable: very large eigenvalue
+ - Rescale variables?
+
+#########################################################################################################################################
+
+Linear mixed model fit by REML. t-tests use Satterthwaite's method ['lmerModLmerTest']
 Formula: Child_X_log ~ (1 | Child_ID) + Child_Age + Adult_Lyrical_T_log + Adult_Lyrical_N_log + Adult_NoMusic_N_log + Adult_NoMusic_T_log + Adult_NonLyrical_N_log + Adult_NonLyrical_T_log
    Data: Descriptives_Table
 
@@ -171,6 +337,49 @@ Model is nearly unidentifiable: very large eigenvalue
 #########################################################################################################################################
 
 Linear mixed model fit by REML. t-tests use Satterthwaite's method ['lmerModLmerTest']
+Formula: Child_C_log/(Child_C_log + Child_X_log) ~ (1 | Child_ID) + Adult_Lyrical_T_log +      Adult_Lyrical_N_log + Adult_NoMusic_N_log + Adult_NoMusic_T_log +      Adult_NonLyrical_N_log + Adult_NonLyrical_T_log
+   Data: Descriptives_Table
+
+REML criterion at convergence: 1071.4
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-2.1153 -0.5860 -0.3601  0.5025  3.2856 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ Child_ID (Intercept) 0.02458  0.1568  
+ Residual             0.63997  0.8000  
+Number of obs: 428, groups:  Child_ID, 45
+
+Fixed effects:
+                         Estimate Std. Error         df t value Pr(>|t|)   
+(Intercept)             7.739e-01  3.442e-01  4.190e+02   2.248  0.02509 * 
+Adult_Lyrical_T_log     4.958e-02  1.886e-02  4.210e+02   2.629  0.00888 **
+Adult_Lyrical_N_log    -7.544e-02  3.027e-02  4.202e+02  -2.492  0.01308 * 
+Adult_NoMusic_N_log     7.471e-03  9.970e-03  4.054e+02   0.749  0.45409   
+Adult_NoMusic_T_log    -2.645e-02  1.067e-02  3.614e+02  -2.478  0.01367 * 
+Adult_NonLyrical_N_log  2.528e-02  4.509e-02  4.204e+02   0.561  0.57531   
+Adult_NonLyrical_T_log -6.651e-04  1.875e-02  4.192e+02  -0.035  0.97172   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+            (Intr) A_L_T_ A_L_N_ A_NM_N A_NM_T A_NL_N
+Adlt_Lyr_T_  0.105                                   
+Adlt_Lyr_N_  0.263 -0.276                            
+Adlt_NMs_N_ -0.083  0.025 -0.067                     
+Adlt_NMs_T_ -0.090 -0.124  0.036 -0.348              
+Adlt_NnL_N_  0.764  0.012 -0.260 -0.037 -0.019       
+Adlt_NnL_T_  0.311 -0.274  0.013 -0.063 -0.071  0.057
+
+#########################################################################################################################################
+
+
+
+#########################################################################################################################################
+
+Linear mixed model fit by REML. t-tests use Satterthwaite's method ['lmerModLmerTest']
 Formula: Child_L_log ~ (1 | Child_ID) + Child_Age + Adult_Lyrical_T_log + Adult_Lyrical_N_log + Adult_NoMusic_N_log + Adult_NoMusic_T_log + Adult_NonLyrical_N_log + Adult_NonLyrical_T_log
    Data: Descriptives_Table
 
@@ -208,6 +417,87 @@ Adlt_NMs_N_ -0.383  0.001  0.007 -0.080
 Adlt_NMs_T_ -0.557  0.058 -0.110  0.051 -0.231              
 Adlt_NnL_N_ -0.006 -0.033  0.086 -0.367  0.005 -0.025       
 Adlt_NnL_T_  0.016 -0.024 -0.278  0.042  0.001 -0.117  0.022
+
+#########################################################################################################################################
+
+Linear mixed model fit by REML. t-tests use Satterthwaite's method ['lmerModLmerTest']
+Formula: Child_C_log/(Child_C_log + Child_X_log) ~ (1 | Child_ID) + Adult_Lyrical_T_log +      Adult_Lyrical_N_log + Adult_NoMusic_N_log + Adult_NoMusic_T_log +      Adult_NonLyrical_N_log + Adult_NonLyrical_T_log
+   Data: subset_18
+
+REML criterion at convergence: 26
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-1.8244 -0.3250 -0.0201  0.1910  4.7548 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ Child_ID (Intercept) 0.008895 0.09431 
+ Residual             0.042881 0.20708 
+Number of obs: 98, groups:  Child_ID, 33
+
+Fixed effects:
+                        Estimate Std. Error        df t value Pr(>|t|)   
+(Intercept)             0.501985   0.182138 89.853397   2.756  0.00708 **
+Adult_Lyrical_T_log     0.001746   0.013232 90.397738   0.132  0.89531   
+Adult_Lyrical_N_log     0.002287   0.030003 87.934941   0.076  0.93940   
+Adult_NoMusic_N_log    -0.001410   0.006737 75.235915  -0.209  0.83481   
+Adult_NoMusic_T_log    -0.001120   0.007047 84.376885  -0.159  0.87410   
+Adult_NonLyrical_N_log  0.005056   0.022329 85.723931   0.226  0.82141   
+Adult_NonLyrical_T_log -0.009167   0.009920 81.940883  -0.924  0.35815   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+            (Intr) A_L_T_ A_L_N_ A_NM_N A_NM_T A_NL_N
+Adlt_Lyr_T_  0.369                                   
+Adlt_Lyr_N_  0.575  0.007                            
+Adlt_NMs_N_ -0.117  0.016 -0.047                     
+Adlt_NMs_T_ -0.057 -0.078  0.022 -0.410              
+Adlt_NnL_N_  0.102 -0.001 -0.661 -0.049 -0.003       
+Adlt_NnL_T_  0.203 -0.341 -0.028 -0.060 -0.003  0.068
+
+#########################################################################################################################################
+
+Linear mixed model fit by REML. t-tests use Satterthwaite's method ['lmerModLmerTest']
+Formula: Child_C_log/(Child_C_log + Child_X_log) ~ (1 | Child_ID) + Child_Age +      Adult_Lyrical_T_log + Adult_Lyrical_N_log + Adult_NoMusic_N_log +  
+    Adult_NoMusic_T_log + Adult_NonLyrical_N_log + Adult_NonLyrical_T_log
+   Data: subset_9_18
+
+REML criterion at convergence: 328
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-2.3595 -0.3842 -0.0891  0.1399  4.5105 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ Child_ID (Intercept) 0.01034  0.1017  
+ Residual             0.23012  0.4797  
+Number of obs: 201, groups:  Child_ID, 39
+
+Fixed effects:
+                         Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)              0.983587   0.256865 192.959698   3.829 0.000174 ***
+Child_Age               -0.002283   0.003571 144.860483  -0.639 0.523637    
+Adult_Lyrical_T_log      0.071394   0.016814 191.042538   4.246 3.39e-05 ***
+Adult_Lyrical_N_log     -0.061905   0.024495 185.855476  -2.527 0.012329 *  
+Adult_NoMusic_N_log     -0.012695   0.010289 174.730429  -1.234 0.218922    
+Adult_NoMusic_T_log      0.004080   0.009944 160.697491   0.410 0.682134    
+Adult_NonLyrical_N_log   0.073067   0.035662 187.141145   2.049 0.041870 *  
+Adult_NonLyrical_T_log  -0.018726   0.015696 188.859185  -1.193 0.234347    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+            (Intr) Chld_A A_L_T_ A_L_N_ A_NM_N A_NM_T A_NL_N
+Child_Age   -0.233                                          
+Adlt_Lyr_T_  0.072  0.011                                   
+Adlt_Lyr_N_  0.108  0.073 -0.326                            
+Adlt_NMs_N_ -0.144  0.145 -0.018 -0.053                     
+Adlt_NMs_T_ -0.124  0.163 -0.065  0.037 -0.318              
+Adlt_NnL_N_  0.751 -0.069  0.017 -0.396 -0.041 -0.022       
+Adlt_NnL_T_  0.312 -0.005 -0.402  0.003 -0.027 -0.078  0.098
 
 #########################################################################################################################################
 
