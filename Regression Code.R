@@ -39,7 +39,7 @@ summary(CC_model_9_18_count)
 #predicting C/(C+X)
 CCX_model_log <- lmer(Child_C_log/(Child_C_log + Child_X_log)~ (1|Child_ID) + Adult_Lyrical_T_log + Adult_Lyrical_N_log + Adult_NoMusic_N_log + Adult_NoMusic_T_log + Adult_NonLyrical_N_log +Adult_NonLyrical_T_log, data = Descriptives_Table)
 summary(CCX_model_log)
-CCX_model_count <- lmer(Child_C_count/(Child_C_count + Child_X_count)~ (1|Child_ID) + Adult_Lyrical_T_log + Adult_Lyrical_N_log + Adult_NoMusic_N_log + Adult_NoMusic_T_log + Adult_NonLyrical_N_log +Adult_NonLyrical_T_log, data = Descriptives_Table, family = poisson)
+CCX_model_count <- glmer(Child_C_count/(Child_C_count + Child_X_count)~ (1|Child_ID) + Adult_Lyrical_T_log + Adult_Lyrical_N_log + Adult_NoMusic_N_log + Adult_NoMusic_T_log + Adult_NonLyrical_N_log +Adult_NonLyrical_T_log, data = Descriptives_Table, family = poisson)
 summary(CCX_model_count)
 
 CCX_model_18_log <- lmer(Child_C_log/(Child_C_log + Child_X_log) ~ (1|Child_ID) + Adult_Lyrical_T_log + Adult_Lyrical_N_log + Adult_NoMusic_N_log + Adult_NoMusic_T_log + Adult_NonLyrical_N_log +Adult_NonLyrical_T_log, data = subset_18)
