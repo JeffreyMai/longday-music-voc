@@ -1,9 +1,11 @@
 library(readr)
 
-Cleaned_Dataset_Export_1 <- read_csv("C:/Users/Jeffrey/Box/Jeffrey Mai 1st Year Project (IT API admin)/Stats/Final Analysis Sheets/Cleaned_Dataset_Export_1.csv")
+Double_Cleaned_Export <- read_csv("C:/Users/Jeffrey/Box/Jeffrey Mai 1st Year Project (IT API admin)/Stats/Final Analysis Sheets/Double_Cleaned_Export.csv")
 FNSTETSimplified <- read_csv("C:/Users/Jeffrey/Box/Jeffrey Mai 1st Year Project (IT API admin)/Stats/Final Analysis Sheets/FNSTETSimplified.csv")
-Cleaned_Dataset_Export_1 <- read_csv("~/Library/CloudStorage/Box-Box/Jeffrey Mai 1st Year Project/Stats/Final Analysis Sheets/Cleaned_Dataset_Export_1.csv")
+Descriptives_Table <- read_csv("C:/Users/Jeffrey/Box/Jeffrey Mai 1st Year Project (IT API admin)/Stats/Final Analysis Sheets/Descriptives_Table.csv")
+Double_Cleaned_Export <- read_csv("~/Library/CloudStorage/Box-Box/Jeffrey Mai 1st Year Project/Stats/Final Analysis Sheets/Double_Cleaned_Export.csv")
 FNSTETSimplified <- read_csv("~/Library/CloudStorage/Box-Box/Jeffrey Mai 1st Year Project/Stats/Final Analysis Sheets/FNSTETSimplified.csv")
+Descriptives_Table <- read_csv("~/Library/CloudStorage/Box-Box/Jeffrey Mai 1st Year Project/Stats/Final Analysis Sheets/Descriptives_Table.csv")
 
 #creating empty data frame
 Descriptives_Table = data.frame(File_Name = character(),
@@ -56,6 +58,7 @@ Descriptives_Table = data.frame(File_Name = character(),
 
 #initializing all variables to start 
 File_Name <- 0 #file name
+temp_Name <- 0 #temporary file name holder
 Child_ID <- 0 #child ID
 Child_Age <- 0 #child age
 Start_Time <- 0 #annotation start time
@@ -130,11 +133,14 @@ for(x in 1:nrow(FNSTETSimplified)){
       Child_Age <- 18
     }
   }
+  
   Start_Time <- FNSTETSimplified$StartTimeSS[x]
   End_Time <- FNSTETSimplified$EndTimeSS[x]
-  for(j in 1:nrow(Cleaned_Dataset_Export_1)){ #goes through entire dataset export
+  
+  for(j in 1:nrow(Double_Cleaned_Export)){ #goes through entire dataset export
     
-    temp_Name <- Cleaned_Dataset_Export_1$File[j] #get file name from dataset export
+    temp_Name <- Double_Cleaned_Export$File_Name[j] #get file name from dataset export
+    
     if(nchar(temp_Name) == 22){
       temp_Name <- substr(temp_Name, start = 1, stop = 11) #removes _Edited.eaf
     } else if(nchar(temp_Name) == 23){
@@ -142,65 +148,65 @@ for(x in 1:nrow(FNSTETSimplified)){
     }
     
     
-    if(temp_Name == File_Name && Cleaned_Dataset_Export_1$BeginTime[j] < End_Time){ 
-      if(Cleaned_Dataset_Export_1$BeginTime[j] > Start_Time && Cleaned_Dataset_Export_1$EndTime[j] < End_Time){ #scans for matching file name and start end times
-        if(!is.na(Cleaned_Dataset_Export_1$AdultUtteranceDirection[j])){
-         if(Cleaned_Dataset_Export_1$AdultUtteranceDirection[j] == "N"){ #covers all AU that is NOT directed to infant
-           if(Cleaned_Dataset_Export_1$Music[j] == "LL"){
-              Adult_Lyrical_N <- Adult_Lyrical_N + Cleaned_Dataset_Export_1$Duration[j]
+    if(temp_Name == File_Name){
+      if(Double_Cleaned_Export$Start_Time[j] >= Start_Time && Double_Cleaned_Export$End_Time[j] <= End_Time){ #scans for matching file name and start end times
+        if(!is.na(Double_Cleaned_Export$Adult_Utterance_Direction[j])){
+         if(Double_Cleaned_Export$Adult_Utterance_Direction[j] == "N"){ #covers all AU that is NOT directed to infant
+           if(Double_Cleaned_Export$Music[j] == "LL"){
+              Adult_Lyrical_N <- Adult_Lyrical_N + Double_Cleaned_Export$Duration[j]
               Adult_Lyrical_N_count <- Adult_Lyrical_N_count + 1
-            } else if(Cleaned_Dataset_Export_1$Music[j] == "NL"){
-              Adult_NonLyrical_N <- Adult_NonLyrical_N + Cleaned_Dataset_Export_1$Duration[j]
+            } else if(Double_Cleaned_Export$Music[j] == "NL"){
+              Adult_NonLyrical_N <- Adult_NonLyrical_N + Double_Cleaned_Export$Duration[j]
               Adult_NonLyrical_N_count <- Adult_NonLyrical_N_count + 1
-            } else if(Cleaned_Dataset_Export_1$Music[j] == "NM"){
-              Adult_NoMusic_N <- Adult_NoMusic_N + Cleaned_Dataset_Export_1$Duration[j]
+            } else if(Double_Cleaned_Export$Music[j] == "NM"){
+              Adult_NoMusic_N <- Adult_NoMusic_N + Double_Cleaned_Export$Duration[j]
               Adult_NoMusic_N_count <- Adult_NoMusic_N_count + 1
             }
-        }else if(Cleaned_Dataset_Export_1$AdultUtteranceDirection[j] == "U"){ #covers all AU that has no clear direction
-          if(Cleaned_Dataset_Export_1$Music[j] == "LL"){
-            Adult_Lyrical_U <- Adult_Lyrical_U + Cleaned_Dataset_Export_1$Duration[j]
-            Adult_Lyrical_U_count <- Adult_Lyrical_U_count + 1
-          } else if(Cleaned_Dataset_Export_1$Music[j] == "NL"){
-            Adult_NonLyrical_U <- Adult_NonLyrical_U + Cleaned_Dataset_Export_1$Duration[j]
-            Adult_NonLyrical_U_count <- Adult_NonLyrical_U_count + 1
-          } else if(Cleaned_Dataset_Export_1$Music[j] == "NM"){
-            Adult_NoMusic_U <- Adult_NoMusic_U + Cleaned_Dataset_Export_1$Duration[j]
-            Adult_NoMusic_U_count <- Adult_NoMusic_U_count + 1
-          }
-        }else if(Cleaned_Dataset_Export_1$AdultUtteranceDirection[j] == "T"){ #covers all AU that is directed to infant
-          if(Cleaned_Dataset_Export_1$Music[j] == "LL"){
-            Adult_Lyrical_T <- Adult_Lyrical_T + Cleaned_Dataset_Export_1$Duration[j]
-            Adult_Lyrical_T_count <- Adult_Lyrical_T_count + 1
-          } else if(Cleaned_Dataset_Export_1$Music[j] == "NL"){
-            Adult_NonLyrical_T <- Adult_NonLyrical_T + Cleaned_Dataset_Export_1$Duration[j]
-            Adult_NonLyrical_T_count <- Adult_NonLyrical_T_count + 1
-          } else if(Cleaned_Dataset_Export_1$Music[j] == "NM"){
-            Adult_NoMusic_T <- Adult_NoMusic_T + Cleaned_Dataset_Export_1$Duration[j]
-            Adult_NoMusic_T_count <- Adult_NoMusic_T_count + 1
+          }else if(Double_Cleaned_Export$Adult_Utterance_Direction[j] == "U"){ #covers all AU that has no clear direction
+            if(Double_Cleaned_Export$Music[j] == "LL"){
+              Adult_Lyrical_U <- Adult_Lyrical_U + Double_Cleaned_Export$Duration[j]
+              Adult_Lyrical_U_count <- Adult_Lyrical_U_count + 1
+            } else if(Double_Cleaned_Export$Music[j] == "NL"){
+              Adult_NonLyrical_U <- Adult_NonLyrical_U + Double_Cleaned_Export$Duration[j]
+              Adult_NonLyrical_U_count <- Adult_NonLyrical_U_count + 1
+            } else if(Double_Cleaned_Export$Music[j] == "NM"){
+              Adult_NoMusic_U <- Adult_NoMusic_U + Double_Cleaned_Export$Duration[j]
+              Adult_NoMusic_U_count <- Adult_NoMusic_U_count + 1
+            }
+          }else if(Double_Cleaned_Export$Adult_Utterance_Direction[j] == "T"){ #covers all AU that is directed to infant
+            if(Double_Cleaned_Export$Music[j] == "LL"){
+              Adult_Lyrical_T <- Adult_Lyrical_T + Double_Cleaned_Export$Duration[j]
+              Adult_Lyrical_T_count <- Adult_Lyrical_T_count + 1
+            } else if(Double_Cleaned_Export$Music[j] == "NL"){
+              Adult_NonLyrical_T <- Adult_NonLyrical_T + Double_Cleaned_Export$Duration[j]
+              Adult_NonLyrical_T_count <- Adult_NonLyrical_T_count + 1
+            } else if(Double_Cleaned_Export$Music[j] == "NM"){
+              Adult_NoMusic_T <- Adult_NoMusic_T + Double_Cleaned_Export$Duration[j]
+              Adult_NoMusic_T_count <- Adult_NoMusic_T_count + 1
+            }
           }
         }
-      }
-        if(!is.na(Cleaned_Dataset_Export_1$InfantVocType[j])){
-          if(Cleaned_Dataset_Export_1$InfantVocType[j] == "C"){
-            Child_C <- Child_C + Cleaned_Dataset_Export_1$Duration[j]
-            Child_C_X <- Child_C_X + Cleaned_Dataset_Export_1$Duration[j]
+        if(!is.na(Double_Cleaned_Export$Infant_Voc[j])){
+          if(Double_Cleaned_Export$Infant_Voc[j] == "C"){
+            Child_C <- Child_C + Double_Cleaned_Export$Duration[j]
+            Child_C_X <- Child_C_X + Double_Cleaned_Export$Duration[j]
             Child_C_count <- Child_C_count + 1
             Child_C_X_count <- Child_C_X_count + 1
-          } else if(Cleaned_Dataset_Export_1$InfantVocType[j] == "X"){
-            Child_X <- Child_X + Cleaned_Dataset_Export_1$Duration[j]
-            Child_C_X <- Child_C_X + Cleaned_Dataset_Export_1$Duration[j]
+          } else if(Double_Cleaned_Export$Infant_Voc[j] == "X"){
+            Child_X <- Child_X + Double_Cleaned_Export$Duration[j]
+            Child_C_X <- Child_C_X + Double_Cleaned_Export$Duration[j]
             Child_X_count <- Child_X_count + 1
             Child_C_X_count <- Child_C_X_count + 1
-          } else if(Cleaned_Dataset_Export_1$InfantVocType[j] == "R"){
-            Child_R <- Child_R + Cleaned_Dataset_Export_1$Duration[j]
+          } else if(Double_Cleaned_Export$Infant_Voc[j] == "R"){
+            Child_R <- Child_R + Double_Cleaned_Export$Duration[j]
             Child_R_count <- Child_R_count + 1
-          } else if(Cleaned_Dataset_Export_1$InfantVocType[j] == "L"){
-            Child_L <- Child_L + Cleaned_Dataset_Export_1$Duration[j]
+          } else if(Double_Cleaned_Export$Infant_Voc[j] == "L"){
+            Child_L <- Child_L + Double_Cleaned_Export$Duration[j]
             Child_L_count <- Child_L_count + 1
         }
       }
         } 
-      }else if(j == nrow(Cleaned_Dataset_Export_1)){ #prints the info for the 5 minute segment
+      }else if(j == nrow(Double_Cleaned_Export)){ #prints the info for the 5 minute segment
         Child_C_log <- log(Child_C + 1)
         Child_X_log <- log(Child_X + 1)
         Child_R_log <- log(Child_R + 1)
@@ -320,10 +326,11 @@ for(x in 1:nrow(FNSTETSimplified)){
   }
 }
 
-#Changes values from char to numberic format
+#Changes values from char to numeric format
 for (i in 2:ncol(Descriptives_Table)){
   Descriptives_Table[,i] <- as.numeric(Descriptives_Table[,i])
 }
 
-write.csv("C:/Users/Jeffrey/Box/Jeffrey Mai 1st Year Project (IT API admin)/Stats/Final Analysis Sheets/Descriptives_Table.csv")
+write.csv(Descriptives_Table, "C:/Users/Jeffrey/Box/Jeffrey Mai 1st Year Project (IT API admin)/Stats/Final Analysis Sheets/Descriptives_Table.csv")
+write.csv(Descriptives_Table, "~/Library/CloudStorage/Box-Box/Jeffrey Mai 1st Year Project/Stats/Final Analysis Sheets/Descriptives_Table.csv")
 
