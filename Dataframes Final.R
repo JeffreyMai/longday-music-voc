@@ -2,10 +2,8 @@ library(readr)
 
 Double_Cleaned_Export <- read_csv("C:/Users/Jeffrey/Box/Jeffrey Mai 1st Year Project (IT API admin)/Stats/Final Analysis Sheets/Double_Cleaned_Export.csv")
 FNSTETSimplified <- read_csv("C:/Users/Jeffrey/Box/Jeffrey Mai 1st Year Project (IT API admin)/Stats/Final Analysis Sheets/FNSTETSimplified.csv")
-Descriptives_Table <- read_csv("C:/Users/Jeffrey/Box/Jeffrey Mai 1st Year Project (IT API admin)/Stats/Final Analysis Sheets/Descriptives_Table.csv")
 Double_Cleaned_Export <- read_csv("~/Library/CloudStorage/Box-Box/Jeffrey Mai 1st Year Project/Stats/Final Analysis Sheets/Double_Cleaned_Export.csv")
 FNSTETSimplified <- read_csv("~/Library/CloudStorage/Box-Box/Jeffrey Mai 1st Year Project/Stats/Final Analysis Sheets/FNSTETSimplified.csv")
-Descriptives_Table <- read_csv("~/Library/CloudStorage/Box-Box/Jeffrey Mai 1st Year Project/Stats/Final Analysis Sheets/Descriptives_Table.csv")
 
 #creating empty data frame
 Descriptives_Table = data.frame(File_Name = character(),
