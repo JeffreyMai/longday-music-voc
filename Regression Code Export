@@ -1,0 +1,113 @@
+Formula: Child_C_log ~ (1 | Child_ID) + Child_Age + Adult_Lyrical_T_log + Adult_Lyrical_N_log + Adult_NoMusic_N_log + Adult_NoMusic_T_log +  Adult_NonLyrical_N_log + Adult_NonLyrical_T_log
+Data: Descriptives_Table
+
+REML criterion at convergence: 1292.2
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-2.6661 -0.7425 -0.1536  0.7171  2.8271 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ Child_ID (Intercept) 0.1391   0.3729  
+ Residual             1.0753   1.0370  
+Number of obs: 425, groups:  Child_ID, 45
+
+Fixed effects:
+                         Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)              0.311602   0.148420 257.829526   2.099   0.0367 *  
+Child_Age                0.135748   0.009307 393.777374  14.585   <2e-16 ***
+Adult_Lyrical_T_log     -0.144484   0.080955 407.254920  -1.785   0.0750 .  
+Adult_Lyrical_N_log     -0.020912   0.163325 404.108370  -0.128   0.8982    
+Adult_NoMusic_N_log     -0.078882   0.034243 415.733737  -2.304   0.0217 *  
+Adult_NoMusic_T_log      0.088806   0.038544 396.584804   2.304   0.0217 *  
+Adult_NonLyrical_N_log   0.025176   0.362218 407.219766   0.070   0.9446    
+Adult_NonLyrical_T_log  -0.185889   0.090634 407.822738  -2.051   0.0409 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+            (Intr) Chld_A A_L_T_ A_L_N_ A_NM_N A_NM_T A_NL_N
+Child_Age   -0.445                                          
+Adlt_Lyr_T_ -0.009  0.059                                   
+Adlt_Lyr_N_ -0.004 -0.002 -0.331                            
+Adlt_NMs_N_ -0.335 -0.081  0.000 -0.073                     
+Adlt_NMs_T_ -0.507 -0.058 -0.109  0.037 -0.184              
+Adlt_NnL_N_  0.006 -0.055  0.080 -0.369  0.006 -0.012       
+Adlt_NnL_T_  0.030 -0.041 -0.264  0.051 -0.004 -0.114  0.022
+
+#########################################################################################################################################
+
+Formula: Child_X_log ~ (1 | Child_ID) + Child_Age + Adult_Lyrical_T_log + Adult_Lyrical_N_log + Adult_NoMusic_N_log + Adult_NoMusic_T_log + Adult_NonLyrical_N_log + Adult_NonLyrical_T_log
+Data: Descriptives_Table
+
+REML criterion at convergence: 1159.1
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-3.7471 -0.4478  0.1567  0.6299  2.0659 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ Child_ID (Intercept) 0.1768   0.4205  
+ Residual             0.7538   0.8682  
+Number of obs: 425, groups:  Child_ID, 45
+
+Fixed effects:
+                         Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)              3.537419   0.132786 191.755772  26.640  < 2e-16 ***
+Child_Age               -0.023336   0.007824 384.602204  -2.983  0.00304 ** 
+Adult_Lyrical_T_log     -0.171530   0.068308 395.142427  -2.511  0.01243 *  
+Adult_Lyrical_N_log     -0.153054   0.137660 391.927243  -1.112  0.26690    
+Adult_NoMusic_N_log     -0.031560   0.029035 408.219172  -1.087  0.27771    
+Adult_NoMusic_T_log      0.025241   0.033130 413.681544   0.762  0.44656    
+Adult_NonLyrical_N_log  -0.015086   0.305590 394.371633  -0.049  0.96065    
+Adult_NonLyrical_T_log  -0.087384   0.076487 395.480109  -1.142  0.25395    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+            (Intr) Chld_A A_L_T_ A_L_N_ A_NM_N A_NM_T A_NL_N
+Child_Age   -0.412                                          
+Adlt_Lyr_T_ -0.004  0.061                                   
+Adlt_Lyr_N_ -0.002 -0.003 -0.327                            
+Adlt_NMs_N_ -0.315 -0.080  0.003 -0.073                     
+Adlt_NMs_T_ -0.488 -0.059 -0.117  0.032 -0.187              
+Adlt_NnL_N_  0.005 -0.054  0.077 -0.370  0.003 -0.008       
+Adlt_NnL_T_  0.028 -0.039 -0.256  0.054 -0.008 -0.109  0.022
+
+#########################################################################################################################################
+
+Formula: (Child_C_log/Child_C_X_log) ~ (1 | Child_ID) + Child_Age + Adult_Lyrical_T_log + Adult_Lyrical_N_log + Adult_NoMusic_N_log + Adult_NoMusic_T_log 
+Data: Descriptives_Table
+
+REML criterion at convergence: 100.8
+
+Scaled residuals: 
+     Min       1Q   Median       3Q      Max 
+-2.65016 -0.75667 -0.05498  0.72354  2.82394 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ Child_ID (Intercept) 0.006398 0.07999 
+ Residual             0.063808 0.25260 
+Number of obs: 416, groups:  Child_ID, 45
+
+Fixed effects:
+                      Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)           0.085235   0.036866 287.198820   2.312   0.0215 *  
+Child_Age             0.034425   0.002274 386.110809  15.139   <2e-16 ***
+Adult_Lyrical_T_log  -0.045688   0.018863 408.185796  -2.422   0.0159 *  
+Adult_Lyrical_N_log   0.021672   0.036810 398.051160   0.589   0.5564    
+Adult_NoMusic_N_log  -0.016124   0.008379 409.291074  -1.924   0.0550 .  
+Adult_NoMusic_T_log   0.017364   0.009433 375.540227   1.841   0.0665 .  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+            (Intr) Chld_A A_L_T_ A_L_N_ A_NM_N
+Child_Age   -0.447                            
+Adlt_Lyr_T_ -0.002  0.054                     
+Adlt_Lyr_N_ -0.008 -0.021 -0.323              
+Adlt_NMs_N_ -0.363 -0.077 -0.003 -0.073       
+Adlt_NMs_T_ -0.537 -0.060 -0.141  0.046 -0.149
