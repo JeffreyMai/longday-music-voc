@@ -1,9 +1,11 @@
 library(readr)
 
-Double_Cleaned_Export <- read_csv("C:/Users/Jeffrey/Box/Jeffrey Mai 1st Year Project (IT API admin)/Stats/Final Analysis Sheets/Double_Cleaned_Export.csv")
-FNSTETSimplified <- read_csv("C:/Users/Jeffrey/Box/Jeffrey Mai 1st Year Project (IT API admin)/Stats/Final Analysis Sheets/FNSTETSimplified.csv")
+Double_Cleaned_Export <- read_csv("C:/Users/Jeffrey/Box/Jeffrey Mai 1st Year Project/Stats/Final Analysis Sheets/Double_Cleaned_Export.csv")
+FNSTETSimplified <- read_csv("C:/Users/Jeffrey/Box/Jeffrey Mai 1st Year Project/Stats/Final Analysis Sheets/FNSTETSimplified.csv")
+Descriptives_Table <- read_csv("C:/Users/Jeffrey/Box/Jeffrey Mai 1st Year Project/Stats/Final Analysis Sheets/Descriptives_Table.csv")
 Double_Cleaned_Export <- read_csv("~/Library/CloudStorage/Box-Box/Jeffrey Mai 1st Year Project/Stats/Final Analysis Sheets/Double_Cleaned_Export.csv")
 FNSTETSimplified <- read_csv("~/Library/CloudStorage/Box-Box/Jeffrey Mai 1st Year Project/Stats/Final Analysis Sheets/FNSTETSimplified.csv")
+Descriptives_Table <- read_csv("~/Library/CloudStorage/Box-Box/Jeffrey Mai 1st Year Project/Stats/Final Analysis Sheets/Descriptives_Table.csv")
 
 #creating empty data frame
 Descriptives_Table = data.frame(File_Name = character(),
@@ -139,9 +141,9 @@ for(x in 1:nrow(FNSTETSimplified)){
     
     temp_Name <- Double_Cleaned_Export$File_Name[j] #get file name from dataset export
     
-    if(nchar(temp_Name) == 22){
+    if(nchar(temp_Name) == 29){
       temp_Name <- substr(temp_Name, start = 1, stop = 11) #removes _Edited.eaf
-    } else if(nchar(temp_Name) == 23){
+    } else if(nchar(temp_Name) == 30){
       temp_Name <- substr(temp_Name, start = 1, stop = 12) #removes _Edited.eaf
     }
     
@@ -329,6 +331,6 @@ for (i in 2:ncol(Descriptives_Table)){
   Descriptives_Table[,i] <- as.numeric(Descriptives_Table[,i])
 }
 
-write.csv(Descriptives_Table, "C:/Users/Jeffrey/Box/Jeffrey Mai 1st Year Project (IT API admin)/Stats/Final Analysis Sheets/Descriptives_Table.csv")
+write.csv(Descriptives_Table, "C:/Users/Jeffrey/Box/Jeffrey Mai 1st Year Project/Stats/Final Analysis Sheets/Descriptives_Table.csv")
 write.csv(Descriptives_Table, "~/Library/CloudStorage/Box-Box/Jeffrey Mai 1st Year Project/Stats/Final Analysis Sheets/Descriptives_Table.csv")
 
